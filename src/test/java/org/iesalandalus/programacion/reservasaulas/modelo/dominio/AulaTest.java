@@ -1,7 +1,15 @@
 package org.iesalandalus.programacion.reservasaulas.modelo.dominio;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
+
+import org.iesalandalus.programacion.reservasaulas.Aula;
+import org.junit.Test;
+
 public class AulaTest {
-	/*
+
 	private static final String ERROR_EXCEPCION = "Debería haber saltado la excepción.";
 	private static final String ERROR_NO_EXCEPCION = "No debería haber saltado la excepción.";
 	private static final String nombre = "Salón de actos";
@@ -16,7 +24,7 @@ public class AulaTest {
 			fail(ERROR_NO_EXCEPCION);
 		}
 	}
-	
+
 	@Test
 	public void constructorUnParametroNoValidoTest() {
 		Aula aula = null;
@@ -36,7 +44,7 @@ public class AulaTest {
 			assertNull(aula);
 		}
 	}
-	
+
 	@Test
 	public void constructorCopiaValidoTest() {
 		Aula aula = new Aula(nombre);
@@ -48,7 +56,7 @@ public class AulaTest {
 			fail(ERROR_NO_EXCEPCION);
 		}
 	}
-	
+
 	@Test
 	public void constructorCopiaNoValidoTest() {
 		Aula aula = null;
@@ -61,13 +69,13 @@ public class AulaTest {
 			assertNull(aula);
 		}
 	}
-	
+
 	@Test
 	public void getTest() {
 		Aula aula = new Aula(nombre);
 		assertEquals(nombre, aula.getNombre());
 	}
-	
+
 	@Test
 	public void hasCodeTest() {
 		Aula aula = new Aula(nombre);
@@ -77,7 +85,7 @@ public class AulaTest {
 		assertEquals(aula.hashCode(), aula1.hashCode());
 		assertNotEquals(aula.hashCode(), aula2.hashCode());
 	}
-	
+
 	@Test
 	public void equalTest() {
 		Aula aula = new Aula(nombre);
@@ -89,11 +97,11 @@ public class AulaTest {
 		assertEquals(aula, aula1);
 		assertNotEquals(aula, aula2);
 	}
-	
+
 	@Test
 	public void toStringTest() {
 		Aula aula = new Aula(nombre);
 		assertEquals("[nombre=Salón de actos]", aula.toString());
 	}
-*/
+
 }

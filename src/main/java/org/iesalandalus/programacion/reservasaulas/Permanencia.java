@@ -11,7 +11,8 @@ public class Permanencia {
 	// String dia3 = FORMATO_DIA.format(dia);
 
 	public Permanencia(LocalDate dia, Tramo tramo) {
-		// TODO Auto-generated constructor stub
+		setDia(dia);
+		setTramo(tramo);
 	}
 
 	public Permanencia(Permanencia permanencia) {
@@ -44,6 +45,8 @@ public class Permanencia {
 			this.tramo = Tramo.MANANA;
 		} else if (tramo == Tramo.TARDE) {
 			this.tramo = Tramo.TARDE;
+		} else {
+			throw new IllegalArgumentException("El valor del tramo no es correcto");
 		}
 	}
 
