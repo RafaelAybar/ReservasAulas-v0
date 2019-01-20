@@ -8,11 +8,13 @@ public class Aula {
 	}
 
 	public Aula(Aula aula) {
-
+		this.nombre = aula.nombre;
 	}
 
 	private void setNombre(String nombre) {
 		if (nombre == null || nombre.isEmpty()) {
+			throw new IllegalArgumentException("El nombre no es correcto");
+		} else {
 			this.nombre = nombre;
 		}
 	}
