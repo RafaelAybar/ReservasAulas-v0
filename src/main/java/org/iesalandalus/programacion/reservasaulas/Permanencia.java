@@ -16,7 +16,8 @@ public class Permanencia {
 	}
 
 	public Permanencia(Permanencia permanencia) {
-
+		this.dia = permanencia.dia;
+		this.tramo = permanencia.tramo;
 	}
 
 	public LocalDate getDia() {

@@ -17,7 +17,9 @@ public class Profesor {
 	}
 
 	Profesor(Profesor profesor) {
-
+		this.nombre = profesor.nombre;
+		this.telefono = profesor.telefono;
+		this.correo = profesor.correo;
 	}
 
 	private void setNonbre(String nombre) {
