@@ -1,19 +1,21 @@
 package org.iesalandalus.programacion.reservasaulas;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 
-public class Aulas {
+public class Aulas implements Cloneable {
 	private static final int MAX_AULAS = 30;
 	private int numAulas = 0;
 
-	public ArrayList<Aula> coleccionAulas = new ArrayList<Aula>();
+	public ArrayList<Aula> coleccionAulas = new ArrayList<>();
 
 	public Aulas() {
 
 	}
 
-	public Aulas(Aulas aulas) {
-
+	public Aulas(ArrayList<Aula> coleccionAulas) {
+		this.coleccionAulas = coleccionAulas;
 	}
 
 	private void setAulas(Aula aula) {
@@ -39,8 +41,8 @@ public class Aulas {
 	// Copia profunda
 	private ArrayList<Aula> copiaProfundaAulas(ArrayList<Aula> coleccionAulas) {
 		// Creamos el array nuevo para copiarlo
-
-		return coleccionAulas;
-
+		ArrayList<Aula> copiaColeccionAulas;
+		copiaColeccionAulas = (ArrayList<Aula>) coleccionAulas.stream().map(Aula::new).collect(toList());
+		return copiaColeccionAulas;
 	}
 }
