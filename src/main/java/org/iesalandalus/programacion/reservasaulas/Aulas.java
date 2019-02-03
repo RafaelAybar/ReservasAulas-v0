@@ -7,6 +7,7 @@ public class Aulas implements Cloneable {
 	private int numAulas = 0;
 
 	public Aula[] coleccionAulas;
+	private Aulas aulas;
 
 	public Aulas() {
 		Aula coleccionAulas[] = new Aula[MAX_AULAS];
@@ -20,6 +21,7 @@ public class Aulas implements Cloneable {
 		if (aulas == null) {
 			throw new IllegalArgumentException("No puede ser nulo");
 		}
+		this.aulas = aulas;
 	}
 
 	public Aula[] getAulas() {
@@ -32,38 +34,39 @@ public class Aulas implements Cloneable {
 
 	public void insertar(Aula aula) {
 		// int aulasLibres = 0;
-		if (aula == null) {
-			throw new IllegalArgumentException("No puede ser nulo");
+		if (aula == null || indiceNoSuperaTamano() == true) {
+			throw new IllegalArgumentException("Ni puede ser nulo, ni estar lleno");
 		} else {
-			if (numAulas == MAX_AULAS) {
-				throw new IllegalArgumentException("No se pueden añadir más aulas");
-			}
+
 			// Comprobamos que el aula introducida no existe
-			for (int i = 0; i < coleccionAulas.length; i++) {
+			for (int i = 0; i < MAX_AULAS; i++) {
 				if (coleccionAulas[i].equals(aula)) {
 					throw new IllegalArgumentException("Esa aula ya existe");
 				}
 			}
-			// Insertamos el aula
-			for (int i = 0; i < coleccionAulas.length; i++) {
-				if (coleccionAulas[i] == null) {
-					coleccionAulas[i] = aula;
-					break;
-				}
-			}
+			coleccionAulas[numAulas] = aula;
 			numAulas++;
 		}
 	}
 
 	private int buscarIndiceAula(Aula aula) {
 		int indiceAula = -1;
-		for (int i = 0; i < coleccionAulas.length; i++) {
+		for (int i = 0; i < MAX_AULAS; i++) {
 			if (aula.equals(coleccionAulas[i])) {
 				indiceAula = i;
 			}
 		}
 		return indiceAula;
+	}
 
+	private boolean indiceNoSuperaTamano() {
+		boolean siSupera;
+		if (numAulas == MAX_AULAS) {
+			siSupera = true;
+		} else {
+			siSupera = false;
+		}
+		return siSupera;
 	}
 
 	public Aula buscarAula(Aula aula) {
@@ -79,12 +82,23 @@ public class Aulas implements Cloneable {
 		return coleccionAulas[indiceAulaEncontrada];
 	}
 
+	public void borrar(Aula aula) {
+		int indiceAulaEncontrada = buscarIndiceAula(aula);
+
+		if (aula == null || indiceAulaEncontrada == -1) {
+			throw new IllegalArgumentException("No se ha podido encontrar");
+		} else {
+			coleccionAulas[indiceAulaEncontrada] = coleccionAulas[numAulas];
+			numAulas--;
+		}
+	}
+
 	// Copia profunda
 	private Aula[] copiaProfundaAulas(Aula[] coleccionAulas) {
 		// Creamos el array nuevo para copiarlo
 		Aula[] copiaColeccionAulas;
-		// copiaColeccionAulas = (Aula[])
-		// coleccionAulas.stream().map(Aula::new).collect(toList());
+
+		// Copiamos el array
 		copiaColeccionAulas = Stream.of(coleccionAulas).map(Aula::new).toArray(Aula[]::new);
 		return copiaColeccionAulas;
 	}
