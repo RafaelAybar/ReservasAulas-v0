@@ -55,6 +55,30 @@ public class Aulas implements Cloneable {
 		}
 	}
 
+	private int buscarIndiceAula(Aula aula) {
+		int indiceAula = -1;
+		for (int i = 0; i < coleccionAulas.length; i++) {
+			if (aula.equals(coleccionAulas[i])) {
+				indiceAula = i;
+			}
+		}
+		return indiceAula;
+
+	}
+
+	public Aula buscarAula(Aula aula) {
+		if (aula == null) {
+			throw new IllegalArgumentException("No puede ser nulo");
+		}
+
+		int indiceAulaEncontrada = buscarIndiceAula(aula);
+
+		if (indiceAulaEncontrada == -1) {
+			throw new IllegalArgumentException("El aula no existe");
+		}
+		return coleccionAulas[indiceAulaEncontrada];
+	}
+
 	// Copia profunda
 	private Aula[] copiaProfundaAulas(Aula[] coleccionAulas) {
 		// Creamos el array nuevo para copiarlo
