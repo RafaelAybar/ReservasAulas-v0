@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.reservasaulas;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Aulas implements Cloneable {
@@ -61,7 +62,7 @@ public class Aulas implements Cloneable {
 
 	private boolean indiceNoSuperaTamano() {
 		boolean siSupera;
-		if (numAulas == MAX_AULAS) {
+		if (numAulas >= MAX_AULAS) {
 			siSupera = true;
 		} else {
 			siSupera = false;
@@ -80,6 +81,16 @@ public class Aulas implements Cloneable {
 			throw new IllegalArgumentException("El aula no existe");
 		}
 		return coleccionAulas[indiceAulaEncontrada];
+	}
+
+	private boolean indiceNoSuperaCantidad(int indice) {
+		boolean noSupera;
+		if (indice >= MAX_AULAS) {
+			noSupera = true;
+		} else {
+			noSupera = false;
+		}
+		return noSupera;
 	}
 
 	public void borrar(Aula aula) {
@@ -101,5 +112,10 @@ public class Aulas implements Cloneable {
 		// Copiamos el array
 		copiaColeccionAulas = Stream.of(coleccionAulas).map(Aula::new).toArray(Aula[]::new);
 		return copiaColeccionAulas;
+	}
+
+	public String[] representar() {
+		String[] arrayString = Arrays.copyOf(coleccionAulas, coleccionAulas.length, String[].class);
+		return arrayString;
 	}
 }
