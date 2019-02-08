@@ -11,7 +11,7 @@ public class Aulas implements Cloneable {
 	private Aulas aulas;
 
 	public Aulas() {
-		Aula coleccionAulas[] = new Aula[MAX_AULAS];
+		coleccionAulas = new Aula[MAX_AULAS];
 	}
 
 	public Aulas(Aula[] coleccionAulas) {
@@ -34,19 +34,16 @@ public class Aulas implements Cloneable {
 	}
 
 	public void insertar(Aula aula) {
-		// int aulasLibres = 0;
 		if (aula == null || indiceNoSuperaTamano() == true) {
 			throw new IllegalArgumentException("Ni puede ser nulo, ni estar lleno");
 		} else {
 
-			// Comprobamos que el aula introducida no existe
-			for (int i = 0; i < MAX_AULAS; i++) {
-				if (coleccionAulas[i].equals(aula)) {
-					throw new IllegalArgumentException("Esa aula ya existe");
-				}
+			if (buscarIndiceAula(aula) == -1) {
+				coleccionAulas[numAulas] = aula;
+				numAulas++;
+			} else {
+				throw new IllegalArgumentException("El profesor ya existe");
 			}
-			coleccionAulas[numAulas] = aula;
-			numAulas++;
 		}
 	}
 
