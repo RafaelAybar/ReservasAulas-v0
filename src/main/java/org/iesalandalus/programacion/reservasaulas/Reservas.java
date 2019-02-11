@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.reservasaulas;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Reservas {
@@ -14,7 +15,7 @@ public class Reservas {
 	}
 
 	public Reservas(Reservas reservas) {
-
+		// this.reservas = reservas;
 	}
 
 	private void setReservas(Reservas reservas) {
@@ -39,14 +40,20 @@ public class Reservas {
 	public void insertar(Reserva reserva) {
 		int indiceReserva = buscarIndiceReserva(reserva);
 
-		if (reserva == null || indiceReserva != -1) {
+		if (indiceReserva != -1) {
 			throw new IllegalArgumentException("Ese valor ya existe");
+		}
+		if (indiceNoSuperaTamano(numReservas) == true) {
+			throw new IllegalArgumentException("Ya no se pueden registrar más reservas");
 		}
 		coleccionReservas[numReservas] = reserva;
 		numReservas++;
 	}
 
 	private int buscarIndiceReserva(Reserva reserva) {
+		if (reserva == null) {
+			throw new IllegalArgumentException("No puede ser nulo");
+		}
 		int indiceReservaEncontrado = -1;
 		for (int i = 0; i < coleccionReservas.length; i++) {
 			if (coleccionReservas[i].equals(reserva)) {
@@ -54,5 +61,52 @@ public class Reservas {
 			}
 		}
 		return indiceReservaEncontrado;
+	}
+
+	private boolean indiceNoSuperaTamano(int indice) {
+		boolean siSupera;
+		if (numReservas >= MAX_RESERVAS) {
+			siSupera = true;
+		} else {
+			siSupera = false;
+		}
+		return siSupera;
+	}
+
+	private boolean indiceNoSuperaCapacidad(int indice) {
+		boolean siSupera;
+		if (numReservas >= MAX_RESERVAS) {
+			siSupera = true;
+		} else {
+			siSupera = false;
+		}
+		return siSupera;
+	}
+
+	public Reserva buscar(Reserva reserva) {
+		int indice = buscarIndiceReserva(reserva);
+		if (indice == -1) {
+			throw new IllegalArgumentException("No se ha encontrado ");
+		}
+		Reserva reservaEncontrada = coleccionReservas[indice];
+		return reservaEncontrada;
+	}
+
+	private void borrar(Reserva reserva) {
+		int indice = buscarIndiceReserva(reserva);
+		if (indice == -1) {
+			throw new IllegalArgumentException("No se ha encontrado la reserva");
+		}
+		coleccionReservas[indice] = coleccionReservas[numReservas];
+		numReservas--;
+	}
+
+	private void desplazarUnaPosicionHacialaIzquierda(int indice) {
+
+	}
+
+	public String[] representar() {
+		String[] arrayString = Arrays.copyOf(coleccionReservas, coleccionReservas.length, String[].class);
+		return arrayString;
 	}
 }
