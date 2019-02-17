@@ -1,7 +1,9 @@
-package org.iesalandalus.programacion.reservasaulas;
+package org.iesalandalus.programacion.reservasaulas.modelo.dao;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
+
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Profesor;
 
 public class Profesores {
 	private static final int MAX_PROFESORES = 25;

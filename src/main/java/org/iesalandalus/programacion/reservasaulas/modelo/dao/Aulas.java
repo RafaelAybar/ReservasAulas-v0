@@ -1,7 +1,9 @@
-package org.iesalandalus.programacion.reservasaulas;
+package org.iesalandalus.programacion.reservasaulas.modelo.dao;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
+
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 
 public class Aulas implements Cloneable {
 	private static final int MAX_AULAS = 30;
@@ -10,7 +12,7 @@ public class Aulas implements Cloneable {
 	public Aula[] coleccionAulas;
 	private Aulas aulas;
 
-	public Aulas() {
+	public Aulas(Aulas aulas1) {
 		coleccionAulas = new Aula[MAX_AULAS];
 	}
 

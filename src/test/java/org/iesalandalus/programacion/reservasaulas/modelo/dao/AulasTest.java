@@ -1,6 +1,6 @@
 package org.iesalandalus.programacion.reservasaulas.modelo.dao;
 
-import org.iesalandalus.programacion.reservasaulas.Aula;
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import org.junit.Test;
 
 public class AulasTest {

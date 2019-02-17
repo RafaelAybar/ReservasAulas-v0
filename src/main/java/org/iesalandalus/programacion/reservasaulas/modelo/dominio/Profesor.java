@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas;
+package org.iesalandalus.programacion.reservasaulas.modelo.dominio;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,13 +10,13 @@ public class Profesor {
 	private String correo;
 	private String telefono;
 
-	Profesor(String nombre, String correo, String telefono) {
+	public Profesor(String nombre, String correo, String telefono) {
 		setNonbre(nombre);
 		setCorreo(correo);
 		setTelefono(telefono);
 	}
 
-	Profesor(Profesor profesor) {
+	public Profesor(Profesor profesor) {
 		this.nombre = profesor.nombre;
 		this.telefono = profesor.telefono;
 		this.correo = profesor.correo;

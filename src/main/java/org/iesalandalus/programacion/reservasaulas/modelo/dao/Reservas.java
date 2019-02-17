@@ -1,7 +1,9 @@
-package org.iesalandalus.programacion.reservasaulas;
+package org.iesalandalus.programacion.reservasaulas.modelo.dao;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
+
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Reserva;
 
 public class Reservas {
 	// 2 reservas por día x 251 días laborables/año
