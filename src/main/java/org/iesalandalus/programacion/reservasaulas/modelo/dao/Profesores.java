@@ -62,21 +62,13 @@ public class Profesores {
 
 	private boolean indiceNoSuperaTamano(int indice) {
 		boolean siSupera;
-		if (indice >= MAX_PROFESORES) {
-			siSupera = true;
-		} else {
-			siSupera = false;
-		}
+        siSupera = indice >= MAX_PROFESORES;
 		return siSupera;
 	}
 
 	private boolean indiceNoSuperaCapacidad(int indice) {
 		boolean siSupera;
-		if (indice >= MAX_PROFESORES) {
-			siSupera = true;
-		} else {
-			siSupera = false;
-		}
+        siSupera = indice >= MAX_PROFESORES;
 		return siSupera;
 	}
 
@@ -93,9 +85,6 @@ public class Profesores {
 	}
 
 	public void borrar(Profesor profesor) {
-		if (profesor == null || buscarIndiceProfesor(profesor) == -1) {
-			throw new IllegalArgumentException("No existe el profesor introducido");
-		}
 		int indiceprofesorEncontrado = buscarIndiceProfesor(profesor);
 
 		if (profesor == null || indiceprofesorEncontrado == -1) {

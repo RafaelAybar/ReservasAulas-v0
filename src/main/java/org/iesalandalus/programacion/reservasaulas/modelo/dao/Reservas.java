@@ -3,7 +3,7 @@ package org.iesalandalus.programacion.reservasaulas.modelo.dao;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.*;
 
 public class Reservas {
 	// 2 reservas por día x 251 días laborables/año
@@ -67,21 +67,13 @@ public class Reservas {
 
 	private boolean indiceNoSuperaTamano(int indice) {
 		boolean siSupera;
-		if (numReservas >= MAX_RESERVAS) {
-			siSupera = true;
-		} else {
-			siSupera = false;
-		}
+		siSupera = numReservas >= MAX_RESERVAS;
 		return siSupera;
 	}
 
 	private boolean indiceNoSuperaCapacidad(int indice) {
 		boolean siSupera;
-		if (numReservas >= MAX_RESERVAS) {
-			siSupera = true;
-		} else {
-			siSupera = false;
-		}
+		siSupera = numReservas >= MAX_RESERVAS;
 		return siSupera;
 	}
 
@@ -111,4 +103,69 @@ public class Reservas {
 		String[] arrayString = Arrays.copyOf(coleccionReservas, coleccionReservas.length, String[].class);
 		return arrayString;
 	}
+
+	public Reserva[] getReservasProfesor(Profesor profesor){
+		if (profesor == null){
+			throw new IllegalArgumentException("No puede ser nulo");
+		}
+		int contadorProfesoresEncontrados = -1;
+		Reserva[] reservasDelProfesor = new Reserva[MAX_RESERVAS];
+		// Comprobamos que existe
+		for (int i = 0; i<= numReservas; i++){
+            if (coleccionReservas[i].getProfesor().equals(profesor)){
+                contadorProfesoresEncontrados++;
+                reservasDelProfesor[contadorProfesoresEncontrados]= coleccionReservas[i];
+            }
+		}
+		if (contadorProfesoresEncontrados == -1) throw new IllegalArgumentException("No se han encontrado reservas");
+		return reservasDelProfesor;
+	}
+
+	public Reserva[] getReservasAula(Aula aula){
+        if (aula == null){
+            throw new IllegalArgumentException("No puede ser nulo");
+        }
+        int contadorAulasEncontradas = -1;
+        Reserva[] reservasDelAula = new Reserva[MAX_RESERVAS];
+        // Comprobamos que existe
+        for (int i = 0; i<= numReservas; i++){
+            if (coleccionReservas[i].getAula().equals(aula)){
+                contadorAulasEncontradas++;
+                reservasDelAula[contadorAulasEncontradas]= coleccionReservas[i];
+            }
+        }
+        if (contadorAulasEncontradas == -1) throw new IllegalArgumentException("No se han encontrado reservas");
+        return reservasDelAula;
+    }
+
+    public Reserva[] getReservasPermanencia(Permanencia permanencia){
+        if (permanencia == null){
+            throw new IllegalArgumentException("No puede ser nulo");
+        }
+        int contadorPermanencia = -1;
+        Reserva[] reservasPermanencia = new Reserva[MAX_RESERVAS];
+        // Comprobamos que existe
+        for (int i = 0; i<= numReservas; i++){
+            if (coleccionReservas[i].getAula().equals(reservasPermanencia)){
+                contadorPermanencia++;
+                reservasPermanencia[contadorPermanencia]= coleccionReservas[i];
+            }
+        }
+        if (contadorPermanencia == -1) throw new IllegalArgumentException("No se han encontrado reservas");
+        return reservasPermanencia;
+    }
+
+    public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia){
+	    if (aula == null || permanencia == null){
+	        throw  new IllegalArgumentException("No pueden haber valores nulos");
+        }
+        boolean estaDisponible = true;
+        // Comprobamos que el aula NO esté reservada
+        for (int i = 0; i<= numReservas; i++){
+            if (coleccionReservas[i].getAula().equals(aula) && coleccionReservas[i].getPermanencia().equals(permanencia)){
+                estaDisponible = false;
+            }
+        }
+        return estaDisponible;
+    }
 }

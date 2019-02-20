@@ -82,14 +82,9 @@ public class Reserva {
 			return false;
 		}
 		if (permanencia == null) {
-			if (other.permanencia != null) {
-				return false;
-			}
-		} else if (!permanencia.equals(other.permanencia)) {
-			return false;
-		}
-		return true;
-	}
+            return other.permanencia == null;
+		} else return permanencia.equals(other.permanencia);
+    }
 
 	@Override
 	public String toString() {

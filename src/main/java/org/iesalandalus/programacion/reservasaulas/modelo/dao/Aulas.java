@@ -61,11 +61,7 @@ public class Aulas implements Cloneable {
 
 	private boolean indiceNoSuperaTamano() {
 		boolean siSupera;
-		if (numAulas >= MAX_AULAS) {
-			siSupera = true;
-		} else {
-			siSupera = false;
-		}
+		siSupera = numAulas >= MAX_AULAS;
 		return siSupera;
 	}
 
@@ -84,11 +80,7 @@ public class Aulas implements Cloneable {
 
 	private boolean indiceNoSuperaCantidad(int indice) {
 		boolean noSupera;
-		if (indice >= MAX_AULAS) {
-			noSupera = true;
-		} else {
-			noSupera = false;
-		}
+		noSupera = indice >= MAX_AULAS;
 		return noSupera;
 	}
 

@@ -79,11 +79,8 @@ public class Permanencia {
 		} else if (!dia.equals(other.dia)) {
 			return false;
 		}
-		if (tramo != other.tramo) {
-			return false;
-		}
-		return true;
-	}
+        return tramo == other.tramo;
+    }
 
 	@Override
 	public String toString() {
