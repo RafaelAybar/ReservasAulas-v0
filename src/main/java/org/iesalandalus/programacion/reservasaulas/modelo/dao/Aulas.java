@@ -12,7 +12,7 @@ public class Aulas implements Cloneable {
 	public Aula[] coleccionAulas;
 	private Aulas aulas;
 
-	public Aulas(Aulas aulas1) {
+	public Aulas() {
 		coleccionAulas = new Aula[MAX_AULAS];
 	}
 
