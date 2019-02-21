@@ -86,7 +86,7 @@ public class Reservas {
 		return reservaEncontrada;
 	}
 
-	private void borrar(Reserva reserva) {
+	public void borrar(Reserva reserva) {
 		int indice = buscarIndiceReserva(reserva);
 		if (indice == -1) {
 			throw new IllegalArgumentException("No se ha encontrado la reserva");
