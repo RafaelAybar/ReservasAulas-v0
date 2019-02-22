@@ -65,7 +65,7 @@ public class ModeloReservasAulas {
     }
 
     public void borrarProfesor(Profesor profesor) {
-        profesores.insertar(profesor);
+        profesores.borrar(profesor);
     }
 
     //Reservas
