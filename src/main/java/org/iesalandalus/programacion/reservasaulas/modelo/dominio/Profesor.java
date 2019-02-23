@@ -11,7 +11,7 @@ public class Profesor {
 	private String telefono;
 
 	public Profesor(String nombre, String correo, String telefono) {
-		setNonbre(nombre);
+		setNombre(nombre);
 		setCorreo(correo);
 		setTelefono(telefono);
 	}
@@ -22,7 +22,7 @@ public class Profesor {
 		this.correo = profesor.correo;
 	}
 
-	private void setNonbre(String nombre) {
+	private void setNombre(String nombre) {
 
 		if (nombre == null || nombre.isEmpty()) {
 			throw new IllegalArgumentException("El nombre no es válido");
