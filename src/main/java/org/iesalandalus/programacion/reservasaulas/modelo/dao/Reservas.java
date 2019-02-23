@@ -26,13 +26,13 @@ public class Reservas {
 		}
 	}
 
-	private Reserva[] copiaProfundaReservas(Reserva coleccionReservas) {
+	private Reserva[] copiaProfundaReservas(Reserva[] coleccionReservas) {
 		Reserva[] copiaArrayReservas = Stream.of(coleccionReservas).map(Reserva::new).toArray(Reserva[]::new);
 		return copiaArrayReservas;
 	}
 
 	public Reserva[] getReservas() {
-		return coleccionReservas;
+		return copiaProfundaReservas(coleccionReservas);
 	}
 
 	public int getNumReservas() {

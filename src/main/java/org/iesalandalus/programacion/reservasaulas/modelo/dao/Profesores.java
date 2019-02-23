@@ -27,13 +27,13 @@ public class Profesores {
 		}
 	}
 
-	private Profesor[] copiaProfundaProfesores(Profesor coleccionProfesores) {
+	private Profesor[] copiaProfundaProfesores(Profesor[] coleccionProfesores) {
 		Profesor[] copiaArrayProfesores = Stream.of(coleccionProfesores).map(Profesor::new).toArray(Profesor[]::new);
 		return copiaArrayProfesores;
 	}
 
 	public Profesor[] getProfesores() {
-		return coleccionProfesores;
+		return copiaProfundaProfesores(coleccionProfesores);
 	}
 
 	public int getNumProfesores() {

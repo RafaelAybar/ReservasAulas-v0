@@ -28,7 +28,7 @@ public class Aulas implements Cloneable {
 	}
 
 	public Aula[] getAulas() {
-		return coleccionAulas;
+		return copiaProfundaAulas(coleccionAulas);
 	}
 
 	public int getNumAulas() {
