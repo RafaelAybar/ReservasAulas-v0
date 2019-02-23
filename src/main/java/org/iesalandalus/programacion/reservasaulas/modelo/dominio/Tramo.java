@@ -8,4 +8,9 @@ public enum Tramo {
 		this.cadenaAMostrar = cadenaAMostrar;
 	}
 
+	@Override
+	public String toString() {
+		//No pasa los test si se deja el método toString generado por defecto
+		return cadenaAMostrar;
+	}
 }
