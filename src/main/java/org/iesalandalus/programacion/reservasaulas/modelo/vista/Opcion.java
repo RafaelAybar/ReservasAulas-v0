@@ -4,7 +4,7 @@ package org.iesalandalus.programacion.reservasaulas.modelo.vista;
 public enum Opcion {
     SALIR("Salir") {
         public void ejecutar() {
-            vista.comenzar();
+            vista.salir();
         }
     },
     INSERTAR_AULA("Insertar aula") {
@@ -106,8 +106,8 @@ public enum Opcion {
         return esValido;
     }
 
-    public static Opcion getOpcionSegunOrdinal(int ordinal){
-        if (esOrdinalValido(ordinal) == false){
+    public static Opcion getOpcionSegunOrdinal(int ordinal) {
+        if (esOrdinalValido(ordinal) == false) {
             throw new IllegalArgumentException("Opción incoherente");
         }
         return values()[ordinal];
